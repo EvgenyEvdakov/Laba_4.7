@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-import unittest
-from unittest.mock import patch, mock_open
 import sys
+import unittest
+from unittest.mock import mock_open, patch
 
-sys.path.append('../src')
+
+sys.path.append("../src")
 from idz4 import FileManager
 
 

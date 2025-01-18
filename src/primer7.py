@@ -7,10 +7,9 @@
 
 from tkinter import *
 
+
 if __name__ == "__main__":
     root = Tk()
-    l1 = Label(text="This is a label",
-               width=30, height=10,
-               bg="lightgreen")
+    l1 = Label(text="This is a label", width=30, height=10, bg="lightgreen")
     l1.pack(expand=1, fill=Y)
     root.mainloop()

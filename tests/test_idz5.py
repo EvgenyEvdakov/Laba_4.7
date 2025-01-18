@@ -1,22 +1,20 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-import tkinter as tk
 import sys
+import tkinter as tk
 import unittest
 
-sys.path.append('../src')
+
+sys.path.append("../src")
 from idz5 import ContactApp
+
 
 class TestContactApp(unittest.TestCase):
     def setUp(self):
         """Создаем тестовое приложение перед каждым тестом."""
         self.root = tk.Tk()
-        self.contacts = {
-            "Имя": "Евгений",
-            "Фамилия": "Евдаков",
-            "Отчество": "Владимирович"
-        }
+        self.contacts = {"Имя": "Евгений", "Фамилия": "Евдаков", "Отчество": "Владимирович"}
         self.app = ContactApp(self.root, self.contacts)
 
     def tearDown(self):
@@ -48,6 +46,7 @@ class TestContactApp(unittest.TestCase):
         self.app.selected_contact.set("Фамилия")
         self.app.show_info("Фамилия")
         self.assertEqual(self.app.info_label.cget("text"), "Евдаков")
+
 
 if __name__ == "__main__":
     unittest.main()

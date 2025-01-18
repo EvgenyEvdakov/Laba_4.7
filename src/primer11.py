@@ -5,6 +5,7 @@
 
 from tkinter import *
 
+
 if __name__ == "__main__":
     root = Tk()
 
@@ -12,8 +13,7 @@ if __name__ == "__main__":
     text.pack()
     text.insert(1.0, "Hello world!\nline two")
 
-    text.tag_add('title', 1.0, '1.end')
-    text.tag_config('title', justify=CENTER,
-                    font=("Verdana", 24, 'bold'))
+    text.tag_add("title", 1.0, "1.end")
+    text.tag_config("title", justify=CENTER, font=("Verdana", 24, "bold"))
 
     root.mainloop()

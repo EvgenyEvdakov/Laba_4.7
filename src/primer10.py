@@ -14,7 +14,7 @@ def insert_text():
 
 def get_text():
     s = text.get(1.0, END)
-    label['text'] = s
+    label["text"] = s
 
 
 def delete_text():

@@ -40,7 +40,7 @@ class ContactApp:
                 value=name,
                 indicatoron=0,
                 width=10,
-                command=lambda n=name: self.show_info(n)
+                command=lambda n=name: self.show_info(n),
             )
             rb.pack(pady=5)
 
@@ -55,11 +55,7 @@ class ContactApp:
 
 
 if __name__ == "__main__":
-    contacts = {
-        "Имя": "Евгений",
-        "Фамилия": "Евдаков",
-        "Отчество": "Владимирович"
-    }
+    contacts = {"Имя": "Евгений", "Фамилия": "Евдаков", "Отчество": "Владимирович"}
 
     # Создание главного окна
     root = tk.Tk()

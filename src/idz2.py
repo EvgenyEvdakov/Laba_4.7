@@ -7,7 +7,7 @@
 # #00ff00 – зеленый, #007dff – голубой, #0000ff – синий, #7d00ff – фиолетовый.
 
 import tkinter as tk
-from typing import Dict
+from typing import Callable, Dict
 
 
 class ColorManager:
@@ -45,18 +45,26 @@ class ColorApp:
         for idx, (color_name, color_code) in enumerate(self.color_manager.colors.items()):
             button: tk.Button = tk.Button(
                 self.root,
-                text=color_name,   # Название цвета на кнопке
-                bg=color_code,     # Цвет фона кнопки
+                text=color_name,  # Название цвета на кнопке
+                bg=color_code,  # Цвет фона кнопки
                 width=20,
-                command=lambda code=color_code, name=color_name: self.set_color(code, name)
+                command=self.create_command(color_code, color_name),
             )
-            button.grid(row=2+idx, column=0, padx=5, pady=5)
+            button.grid(row=2 + idx, column=0, padx=5, pady=5)
+
+    def create_command(self, color_code: str, color_name: str) -> Callable[[], None]:
+        """Создает команду для кнопки."""
+
+        def command() -> None:
+            self.set_color(color_code, color_name)
+
+        return command
 
     def set_color(self, color_code: str, color_name: str) -> None:
         """Устанавливает код цвета в текстовое поле и название цвета в метку."""
-        self.color_entry.delete(0, tk.END)      # Очищаем текстовое поле
+        self.color_entry.delete(0, tk.END)  # Очищаем текстовое поле
         self.color_entry.insert(0, color_name)  # Вставляем название цвета в текстовое поле
-        self.color_label.config(text=color_code) # Обновляем метку, чтобы в ней был код цвета
+        self.color_label.config(text=color_code)  # Обновляем метку, чтобы в ней был код цвета
 
 
 def main() -> None:
@@ -69,7 +77,7 @@ def main() -> None:
         "Зеленый": "#00ff00",
         "Голубой": "#007dff",
         "Синий": "#0000ff",
-        "Фиолетовый": "#7d00ff"
+        "Фиолетовый": "#7d00ff",
     }
 
     root: tk.Tk = tk.Tk()
@@ -85,5 +93,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-
-

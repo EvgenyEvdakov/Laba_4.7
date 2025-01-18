@@ -2,10 +2,11 @@
 # -*- coding: utf-8 -*-
 
 
-import unittest
 import sys
+import unittest
 
-sys.path.append('../src')
+
+sys.path.append("../src")
 from idz2 import ColorManager
 
 
@@ -21,7 +22,7 @@ class TestColorManager(unittest.TestCase):
             "Зеленый": "#00ff00",
             "Голубой": "#007dff",
             "Синий": "#0000ff",
-            "Фиолетовый": "#7d00ff"
+            "Фиолетовый": "#7d00ff",
         }
         self.color_manager = ColorManager(self.colors)
 

@@ -5,7 +5,7 @@
 # чтобы семь кнопок располагались горизонтально
 
 import tkinter as tk
-from typing import Dict
+from typing import Callable, Dict
 
 
 class ColorManager:
@@ -42,16 +42,22 @@ class ColorApp:
 
         # Создаем цветные квадраты в виде кнопок
         for color_name, color_code in self.color_manager.colors.items():
-            btn: tk.Button = tk.Button(self.root, bg=color_code, width=4, height=2,
-                                       command=lambda c=color_name: self.update_color(c))
+            btn: tk.Button = tk.Button(
+                self.root, bg=color_code, width=4, height=2, command=self.create_update_color_command(color_name)
+            )
             btn.pack(side=tk.LEFT, padx=2, pady=10)
 
-    def update_color(self, selected_color: str) -> None:
-        """Обновляет текстовое поле и метку с выбранным цветом."""
-        color_code = self.color_manager.get_color_code(selected_color)
-        self.color_code_entry.delete(0, tk.END)
-        self.color_code_entry.insert(0, color_code)
-        self.label.config(text=selected_color)
+    def create_update_color_command(self, selected_color: str) -> Callable[[], None]:
+        """Возвращает функцию для обновления цвета."""
+
+        def update_color() -> None:
+            """Обновляет текстовое поле и метку с выбранным цветом."""
+            color_code = self.color_manager.get_color_code(selected_color)
+            self.color_code_entry.delete(0, tk.END)
+            self.color_code_entry.insert(0, color_code)
+            self.label.config(text=selected_color)
+
+        return update_color
 
 
 def main() -> None:
@@ -64,7 +70,7 @@ def main() -> None:
         "зеленый": "#00ff00",
         "голубой": "#00ffff",
         "синий": "#0000ff",
-        "фиолетовый": "#7f00ff"
+        "фиолетовый": "#7f00ff",
     }
 
     root: tk.Tk = tk.Tk()
@@ -80,4 +86,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

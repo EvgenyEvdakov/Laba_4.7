@@ -6,14 +6,13 @@
 
 from tkinter import *
 
+
 class CheckButton:
     def __init__(self, master, title):
         self.var = BooleanVar()
         self.var.set(0)
         self.title = title
-        self.cb = Checkbutton(
-            master, text=title, variable=self.var,
-            onvalue=1, offvalue=0)
+        self.cb = Checkbutton(master, text=title, variable=self.var, onvalue=1, offvalue=0)
         self.cb.pack(side=LEFT)
 
 

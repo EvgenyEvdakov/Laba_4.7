@@ -8,11 +8,11 @@ from tkinter import *
 
 def change():
     if var.get() == 0:
-        label['bg'] = 'red'
+        label["bg"] = "red"
     elif var.get() == 1:
-        label['bg'] = 'green'
+        label["bg"] = "green"
     elif var.get() == 2:
-        label['bg'] = 'blue'
+        label["bg"] = "blue"
 
 
 if __name__ == "__main__":

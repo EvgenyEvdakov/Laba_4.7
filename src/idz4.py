@@ -21,7 +21,7 @@ class FileManager:
     def open_file(self, filename: str) -> Optional[str]:
         """Открывает файл и возвращает его содержимое."""
         try:
-            with open(filename, 'r', encoding='utf-8') as file:
+            with open(filename, "r", encoding="utf-8") as file:
                 return file.read()
         except FileNotFoundError:
             messagebox.showerror("Ошибка", f"Файл {filename} не найден!")
@@ -32,7 +32,7 @@ class FileManager:
     def save_file(self, filename: str, content: str) -> None:
         """Сохраняет содержимое в файл."""
         try:
-            with open(filename, 'w', encoding='utf-8') as file:
+            with open(filename, "w", encoding="utf-8") as file:
                 file.write(content)
             messagebox.showinfo("Успех", f"Файл {filename} успешно сохранен!")
         except Exception as e:
@@ -55,10 +55,14 @@ class FileEditorApp:
         self.filename_entry.grid(row=0, column=0, padx=10, pady=10)
 
         # Создаем кнопки "Открыть" и "Сохранить"
-        open_button: tk.Button = tk.Button(self.root, text="Открыть", width=15, font=("Arial", 14), command=self.open_file)
+        open_button: tk.Button = tk.Button(
+            self.root, text="Открыть", width=15, font=("Arial", 14), command=self.open_file
+        )
         open_button.grid(row=0, column=1, padx=10, pady=10)
 
-        save_button: tk.Button = tk.Button(self.root, text="Сохранить", width=15, font=("Arial", 14), command=self.save_file)
+        save_button: tk.Button = tk.Button(
+            self.root, text="Сохранить", width=15, font=("Arial", 14), command=self.save_file
+        )
         save_button.grid(row=0, column=2, padx=10, pady=10)
 
         # Создаем фрейм для текстового поля и полосы прокрутки
@@ -106,6 +110,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-
-
-

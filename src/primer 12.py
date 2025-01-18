@@ -5,9 +5,11 @@
 
 from tkinter import *
 
+
 def smile():
     label = Label(text=":)", bg="yellow")
     text.window_create(INSERT, window=label)
+
 
 if __name__ == "__main__":
     root = Tk()
